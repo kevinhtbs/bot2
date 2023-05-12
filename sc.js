@@ -9,7 +9,6 @@ const variables = {
 	filter: "VIDEO",
 	hostsDown: null,
 	limit: 20, //30
-	category: "amateur",
 }
 
 const search = async function (nVids) {
