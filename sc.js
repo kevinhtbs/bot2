@@ -37,7 +37,7 @@ const search = async function (nVids) {
 							media.url.includes(".scrolller.com/") &&
 							media.url.includes(".mp4")
 						) {
-							listVids.push({ url: media.url, caption: tl })
+							listVids.push({ url: media.url })
 							UrlVid = "hay"
 						} else {
 						}
@@ -53,7 +53,7 @@ const search = async function (nVids) {
 							let url =
 								"https://static.scrolller.com/proton/" + id + "-mobile.mp4"
 
-							listVids.push({ url: url, caption: tl })
+							listVids.push({ url: url })
 						} else {
 							console.log("Url no Found")
 						}
