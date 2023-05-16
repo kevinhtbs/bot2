@@ -1,17 +1,17 @@
 const fetch = require("node-fetch")
 
 const query = `
-query DiscoverSubredditsQuery( $filter: MediaFilter $limit: Int $iterator: String ) { discoverSubreddits( isNsfw: true filter: $filter limit: $limit iterator: $iterator ) { iterator items { __typename id url title secondaryTitle description createdAt isNsfw subscribers isComplete itemCount videoCount pictureCount albumCount isPaid username tags banner { url width height isOptimized } isFollowing children( limit: 2 iterator: null filter: SOUND disabledHosts: null homePage: true ) { iterator items { __typename id url title subredditId subredditTitle subredditUrl redditPath isNsfw albumUrl hasAudio fullLengthSource gfycatSource redgifsSource ownerAvatar username displayName isPaid tags isFavorite mediaSources { url width height isOptimized } blurredMediaSources { url width height isOptimized } } } } } } 
+query SubredditQuery( $url: String! $filter: SubredditPostFilter $iterator: String ) { getSubreddit(url: $url) { children( limit: 15 iterator: $iterator filter: $filter disabledHosts: null ) { iterator items { __typename id url title subredditId subredditTitle subredditUrl redditPath isNsfw albumUrl hasAudio fullLengthSource gfycatSource redgifsSource ownerAvatar username displayName isPaid tags isFavorite mediaSources { url width height isOptimized } blurredMediaSources { url width height isOptimized } } } } }  
 `
-
-let listVids = []
 const variables = {
 	filter: "VIDEO",
 	hostsDown: null,
-	limit: 20, //30
+	url: configUrl(),
 }
 
-const search = async function (nVids) {
+let listVids = []
+
+const search = async function () {
 	return fetch("https://api.scrolller.com/api/v2/graphql", {
 		method: "post",
 		headers: {
@@ -22,44 +22,45 @@ const search = async function (nVids) {
 		.then((response) => response.json())
 		.then((datos) => {
 			console.log("Data successful")
+			console.log(datos.data.getSubreddit.children.items.length)
 
-			for (let i = 0; i < datos.data.discoverSubreddits.items.length; i++) {
-				const post = datos.data.discoverSubreddits.items[i]
+			for (let i = 0; i < datos.data.getSubreddit.children.items.length; i++) {
+				const vid = datos.data.getSubreddit.children.items[i]
 
-				for (let j = 0; j < post.children.items.length; j++) {
-					const vids = post.children.items[j]
+				let videoTitle = vid.title
+				let videoUrl = ""
+				let videoCover = ""
 
-					let tl = vids.title
-					let UrlVid = ""
+				for (let k = 0; k < vid.mediaSources.length; k++) {
+					const media = vid.mediaSources[k]
 
-					vids.mediaSources.forEach((media) => {
-						if (
-							media.url.includes(".scrolller.com/") &&
-							media.url.includes(".mp4")
-						) {
-							listVids.push({ url: media.url })
-							UrlVid = "hay"
-						} else {
+					if (media.url.includes(".scrolller.com/")) {
+						if (media.url.includes(".mp4")) {
+							videoUrl = media.url
 						}
-					})
 
-					if (UrlVid == "") {
-						if (vids.redgifsSource != null) {
-							let id = vids.redgifsSource
-								.split("/")
-								.pop()
-								.replace("-poster", "")
+						if (media.url.includes(".jpg")) {
+							videoCover = media.url
+						}
+					} else {
+						if (media.url.includes(".mp4")) {
+							let pathId = media.url.split("/").pop()
 
-							let url =
-								"https://static.scrolller.com/proton/" + id + "-mobile.mp4"
-
-							listVids.push({ url: url })
-						} else {
-							console.log("Url no Found")
+							videoUrl = "https://static.scrolller.com/proton/" + pathId
+							videoCover =
+								"https://static.scrolller.com/proton/" +
+								pathId.replace(".mp4", ".jpg")
+							break
 						}
 					}
+				}
 
-					//if (listVids.length >= nVids) return listVids
+				if (videoUrl != "") {
+					listVids.push({
+						videoUrl: videoUrl,
+						videoCover: videoCover,
+						caption: videoTitle,
+					})
 				}
 			}
 
@@ -70,6 +71,24 @@ const search = async function (nVids) {
 			console.log("Error")
 			console.log(e)
 		})
+}
+
+function configUrl() {
+	let list = [
+		"L3IvQW1hdGV1cg==",
+		"L3IvSVJMZ2lybHM=",
+		"L3IvTnNmd19BbWF0ZXVycw==",
+		"L3IvTlNGV3ZlcmlmaWVkYW1hdGV1cnM=",
+		"L3IvQ29sbGVnZUFtYXRldXJz",
+		"L3IvQW1hdGV1clBvcm4=",
+		"L3IvRnVuV2l0aEZyaWVuZHM=",
+		"L3IvVmVyaWZpZWRBbWF0ZXVycw==",
+		"L3IvUmVhbEdpcmxz",
+	]
+
+	let eList = list[Math.floor(Math.random() * list.length)] 
+	let config = Buffer.from(eList, "base64").toString("utf8")
+	return config
 }
 
 module.exports = { search }
