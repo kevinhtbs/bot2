@@ -15,7 +15,7 @@ const sendVids = async function (nVids, myAd) {
 		console.log(videos.length + " videos encontrados")
 		await bot.telegram.sendMessage(
 			idChat,
-			//"🔥 .  .  .  🔥  .  . New .  .  🔥  .  .  . 🔥"
+			""
 		)
 		//await new Promise((resolve) => setTimeout(resolve, 500))
 
