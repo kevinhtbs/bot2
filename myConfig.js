@@ -30,8 +30,8 @@ const MY_AD = {
 			],
 			[
 				{
-					text: "Mamadas 4K",
-					url: "https://t.me/+CwnGJR8ku3VjM2Ix",
+					text: "Canal MOFOS",
+					url: "https://t.me/+yW8nsY71nOYwMWE8",
 				},
 			],
 			[
@@ -42,8 +42,8 @@ const MY_AD = {
 			],
 			[
 				{
-					//text: "Promociona otro canal",
-					//url: "https://tiktok.com",
+					text: "Mamadas 4K",
+					url: "https://t.me/+CwnGJR8ku3VjM2Ix",
 				},
 			],
 		],
