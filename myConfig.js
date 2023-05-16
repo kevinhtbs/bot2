@@ -1,10 +1,10 @@
 let MensajeAd =
-	"​🚨*Promociona lo que desees!*🚨 \n \n" +
-	"	🎁	- Web de afiliados / referidos \n" +
-	"	🤑	- Acortador con AdsTerra \n" +
-	"	📈	- Página con exoclick \n" +
-	"	🗺	- Redirige el tráfico a @otrosCanales o a una página web \n \n" +
-	"['Click Aquí🔥'](https://www.amazon.es)"
+	//"​🚨*Promociona lo que desees!*🚨 \n \n" +
+	//"	🎁	- Web de afiliados / referidos \n" +
+	//"	🤑	- Acortador con AdsTerra \n" +
+	//"	📈	- Página con exoclick \n" +
+	//"	🗺	- Redirige el tráfico a @otrosCanales o a una página web \n \n" +
+	//"['Click Aquí🔥'](https://www.amazon.es)"
 
 let imagenAd =
 	"https://vilmanunez.com/wp-content/uploads/2018/10/poner-anuncios-publicitarios-gratis.png"
@@ -24,26 +24,26 @@ const MY_AD = {
 		linksGroupAd: [
 			[
 				{
-					text: "Web Afiliados / Referidos",
-					url: "https://youtube.com",
+					text: "Canal BRAZZERS",
+					url: "https://t.me/brazzersmrk",
 				},
 			],
 			[
 				{
-					text: "Acortador de enlaces",
-					url: "https://facebook.com",
+					text: "Mamadas 4K",
+					url: "https://t.me/+CwnGJR8ku3VjM2Ix",
 				},
 			],
 			[
 				{
-					text: "Web con anuncios",
-					url: "https://stripchat.com",
+					text: "Zorras Infieles",
+					url: "https://t.me/+FNGfAH75r4Y5YWJh",
 				},
 			],
 			[
 				{
-					text: "Promociona otro canal",
-					url: "https://tiktok.com",
+					//text: "Promociona otro canal",
+					//url: "https://tiktok.com",
 				},
 			],
 		],
