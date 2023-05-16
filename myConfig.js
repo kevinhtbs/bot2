@@ -1,5 +1,5 @@
 let MensajeAd =
-	"" +
+	"" 
 	//"	🎁	- Web de afiliados / referidos \n" +
 	//"	🤑	- Acortador con AdsTerra \n" +
 	//"	📈	- Página con exoclick \n" +
