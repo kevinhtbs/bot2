@@ -59,7 +59,7 @@ const search = async function () {
 					listVids.push({
 						videoUrl: videoUrl,
 						videoCover: videoCover,
-						//caption: videoTitle,
+						caption: videoTitle,
 					})
 				}
 			}
