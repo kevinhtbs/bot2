@@ -24,25 +24,25 @@ const MY_AD = {
 		linksGroupAd: [
 			[
 				{
-					text: "Canal BRAZZERS",
+					text: "🔥 Canal BRAZZERS",
 					url: "https://t.me/brazzersmrk",
 				},
 			],
 			[
 				{
-					text: "Canal MOFOS",
+					text: "🔥 Canal MOFOS",
 					url: "https://t.me/+yW8nsY71nOYwMWE8",
 				},
 			],
 			[
 				{
-					text: "Zorras Infieles",
+					text: "😈 Zorras Infieles",
 					url: "https://t.me/+FNGfAH75r4Y5YWJh",
 				},
 			],
 			[
 				{
-					text: "Mamadas 4K",
+					text: "🍆 Mamadas 4K",
 					url: "https://t.me/+CwnGJR8ku3VjM2Ix",
 				},
 			],
